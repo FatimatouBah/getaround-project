@@ -9,9 +9,13 @@ st.set_page_config(page_title="GetAround - Delay Analysis", page_icon="🚗", la
 # ----------------------------------------------------------------
 # Chargement et preparation des donnees
 # ----------------------------------------------------------------
+import os
+
 @st.cache_data
 def load_data():
-    df = pd.read_excel("get_around_delay_analysis.xlsx")
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    xlsx_path = os.path.join(script_dir, "get_around_delay_analysis.xlsx")
+    df = pd.read_excel(xlsx_path)
 
     chained = df[df["previous_ended_rental_id"].notnull()].copy()
     prev_delays = df[["rental_id", "delay_at_checkout_in_minutes"]].rename(
