@@ -12,16 +12,3 @@ COPY price_model.joblib .
 EXPOSE 7860
 
 CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "7860"]
-
-
-
-
-
-
-
-
-
-
-
-
-"Fix Dockerfile api"
