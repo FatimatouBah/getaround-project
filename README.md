@@ -8,8 +8,10 @@ Aider le Product Manager à décider du **seuil** et du **périmètre** (toutes 
 
 ## 🔗 Liens
 
-- **Dashboard en ligne** : https://huggingface.co/spaces/TON-PSEUDO/getaround-dashboard
-- **API en ligne** : https://TON-PSEUDO-getaround-api.hf.space (documentation interactive sur `/docs`)
+- **Dashboard en ligne** : https://getaround-project-hhrtsoolqpkz9tdp9gdxya.streamlit.app/
+- **API en ligne** : https://getaround-project-2.onrender.com (documentation interactive sur `/docs`)
+
+⚠️ L'API est hébergée sur le plan gratuit de Render : elle se met en veille après 15 minutes d'inactivité. Le premier appel après une pause peut prendre 30 à 60 secondes le temps qu'elle redémarre.
 
 ## 📊 Données
 
@@ -19,15 +21,15 @@ Aider le Product Manager à décider du **seuil** et du **périmètre** (toutes 
 ## 🛠️ Outils
 
 - **Python** (pandas, scikit-learn, matplotlib)
-- **Streamlit** pour le dashboard interactif
-- **FastAPI** pour l'API de prédiction, déployée avec **Docker** sur **Hugging Face Spaces**
+- **Streamlit** pour le dashboard interactif, déployé sur **Streamlit Community Cloud**
+- **FastAPI** pour l'API de prédiction, déployée avec **Docker** sur **Render**
 
 ## 📁 Structure du repo
 
 ```
 ├── dashboard/
 │   ├── GetAround_Delay_Analysis.ipynb   # Notebook EDA complet
-│   ├── app.py                           # Dashboard Streamlit (renommé depuis dashboard.py pour HF)
+│   ├── dashboard.py                     # Dashboard Streamlit
 │   ├── get_around_delay_analysis.xlsx
 │   └── requirements.txt
 ├── api/
@@ -52,7 +54,7 @@ Aider le Product Manager à décider du **seuil** et du **périmètre** (toutes 
 ## 🚀 Utilisation de l'API
 
 ```bash
-curl -i -H "Content-Type: application/json" -X POST -d '{"input": [["Citroën", 140411, 100, "diesel", "black", "convertible", true, false, false, false, true, true, true]]}' https://TON-PSEUDO-getaround-api.hf.space/predict
+curl -i -H "Content-Type: application/json" -X POST -d '{"input": [["Citroën", 140411, 100, "diesel", "black", "convertible", true, false, false, false, true, true, true]]}' https://getaround-project-2.onrender.com/predict
 ```
 
 Réponse attendue :
@@ -66,7 +68,7 @@ Réponse attendue :
 ```bash
 cd dashboard
 pip install -r requirements.txt
-streamlit run app.py
+streamlit run dashboard.py
 ```
 
 **API :**
